@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mini-nanobot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain==1.2.7",
+    "langchain-mcp-adapters",
+    "langchain-openai>=1.3.5",
+    "langgraph>=1.0.10,<1.1",
+    "langgraph-prebuilt<1.0.9",
+    "langgraph-checkpoint-sqlite>=3.1.0",
+    "openai>=2.46.0",
+    "pydantic",
+    "python-dotenv",
+    "rich",
+]
+
+[project.scripts]
+mini-nanobot = "mini_nanobot.cli:run"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "ruff",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mini_nanobot = ["templates/*.md"]
